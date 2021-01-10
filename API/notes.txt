@@ -1,0 +1,47 @@
+﻿Add-Migration InitialCreate -StartupProject API -Project Infrastructure -OutputDir Data/Migrations
+Add-Migration PhotosDocuments -StartupProject API -Project Infrastructure -OutputDir Data/Migrations
+{
+      "paymentTypeDetails" :"Hourly",
+      "ariaDetails" :"Westminster",
+      "gradeDetails" :"Grade 1",
+      "attributeDetails" :"Male or Female",
+      "jobTypeDetails" :"Assistant practitioner",
+      "numberCandidate" : 2,
+      "clientLocationDetails" :"29033 Obie Views Lemuelview	Worcestershire CG14 4KE	UK",
+      "jobDateStart" :"2020-01-02T17:30:00",
+      "jobDateEnd" :"2020-01-02T17:30:00",
+      "startTime" :"08:00",
+      "endTime" :"17:00",
+      "userPhotoUrl" :"https://randomuser.me/api/portraits/women/70.jpg",
+      "status" :"Pending",
+      "numberApplied" : 0,
+      "timeDetailId" :17,
+      "jobTypeId" :"1",
+      "paymentTypeId" : 1,
+      "agencyId": 6,
+      "gradeId": 1,
+      "clientLocationId" : 8,
+      "attributeDetailId": 1,
+      "appUserId" :"110fac59-8125-468d-b742-2cd1b26f5596",
+      "shiftStateId":1
+}
+
+post to https://localhost:44323/api/ManageJob/addtorequest
+
+{
+   "numberCandidate" : 2,
+   "jobDateStart" :"2020-01-02T17:30:00",
+   "jobDateEnd" :"2020-01-02T17:30:00",
+   "startTime" :"08:00",
+   "endTime" :"17:00",
+   "numberApplied" : 0,
+   "timeDetailId" :17,
+   "jobTypeId" :"1",
+   "paymentTypeId" : 1,
+   "agencyId": 6,
+   "gradeId": 2,
+   "clientLocationId" : 8,
+   "attributeDetailId": 1,
+   "appUserId" :"4cd04a5a-8e2b-480e-9031-551930879cc5",
+   "shiftStateId":1
+}

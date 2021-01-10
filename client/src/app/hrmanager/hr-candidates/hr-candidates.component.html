@@ -1,0 +1,55 @@
+<div class="wrapper wrapper-content">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox">
+        <div class="ibox-title">
+            <h5>List Candidates</h5>
+            <div class="ibox-tools">
+                <a routerLink="/hr-manager"  class="btn btn-primary btn-xs">Dashboard</a>
+            </div>
+        </div>
+        <div class="ibox-content">
+            <div class="m-b-sm m-t-sm">
+
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <button tabindex="-1" class="btn btn-white btn-sm" type="button"><i class="fa fa-refresh"></i> Refresh</button>
+                    </div>
+                    <input type="text" class="form-control form-control-sm">
+
+                    <div class="input-group-append">
+                        <button tabindex="-1" class="btn btn-primary btn-sm" type="button">Search</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-list">
+                <div class="row">
+                    <div class="col-lg-2" *ngFor="let candidate of candidates">
+                        <div class="contact-box center-version">
+                            <a [routerLink]="['/hr-manager/hr-candidate-home', candidate.id]" class="selected-item-white">
+                                <img alt="image" class="rounded-circle" src="{{candidate.photoUrl}}">
+                                <h3 class="m-b-xs"><strong>{{candidate.firstName}} {{candidate.lastName}}</strong></h3>
+                                <div class="font-bold">{{candidate.grade}}</div>
+                                <address class="m-t-md">
+                                    <strong>{{candidate?.address1}}</strong><br>
+                                    {{candidate?.address2}}<br>
+                                    <abbr title="Phone">P:</abbr> {{candidate?.contactNumber}}
+                                </address>
+                            </a>
+                            <div class="contact-box-footer">
+                                <div class="m-t-xs btn-group">
+                                    <a [routerLink]="['/hr-manager/hr-photo', candidate.id]" class="btn btn-white btn-sm"><i class="fa fa-photo"></i> View </a>
+                                    <a [routerLink]="['/hr-manager/hr-document', candidate.id]" class="btn btn-white btn-sm"><i class="fa fa-file-pdf-o"></i> Doc </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    </div>
+  </div>
+</div>
+

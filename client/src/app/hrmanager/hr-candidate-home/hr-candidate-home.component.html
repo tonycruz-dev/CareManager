@@ -1,0 +1,107 @@
+<div class="wrapper wrapper-content  animated fadeInRight">
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="ibox ">
+          <div class="ibox-title">
+              <div class="ibox-tools">
+                  <!-- <span class="label label-success float-right">Monthly</span> -->
+                  <div class="stat-percent font-bold text-info mb-5"><a routerLink="/hr-manager/candidates" class="btn btn-primary btn-xs">candidates</a></div>
+              </div>
+              <h5>profile</h5>
+          </div>
+          <div class="ibox-content">
+            <div class="row" *ngIf="candidate$  | async as candidate">
+              <div class="feed-element">
+                <a class="float-left" href="profile.html">
+                  <img alt="image" class="rounded-circle" style="width: 60px; height: 60px;"  src="{{candidate.photoUrl}}" />
+                </a>
+                <div class="media-body">
+                    <strong>{{candidate.firstName}} {{candidate.lastName}}</strong> <br>
+                    <strong>Phone No: {{candidate.contactNumber}}</strong> <br>
+                    <strong>Email: {{candidate.email}}</strong>
+                 </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="col-lg-2">
+      <div class="ibox " *ngIf="candidatejobRequest$ | async as  candidatejobRequest">
+        <div class="ibox-title">
+          <div class="ibox-tools">
+            <span class="label label-info float-right">Job</span>
+          </div>
+          <h5>Requested Jobs</h5>
+        </div>
+        <div class="ibox-content">
+          <h1 class="no-margins">{{candidatejobRequest.length}} </h1>
+          
+          <small>Jobs</small>
+          
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="ibox " *ngIf="candidateJobConformed$ | async as  booked">
+        <div class="ibox-title">
+          <div class="ibox-tools">
+            <span class="label label-info float-right">Booked</span>
+          </div>
+          <h5>Booked Jobs</h5>
+        </div>
+        <div class="ibox-content">
+          <h1 class="no-margins">{{booked.length}} </h1>
+          <div class="stat-percent font-bold text-info">20% <i class="fa fa-level-up"></i></div>
+          <small>Booked</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="ibox " *ngIf="candidateFinish$ | async as  JobFinish">
+        <div class="ibox-title">
+          <div class="ibox-tools">
+            <span class="label label-info float-right">Job Finish</span>
+          </div>
+          <h5>Job Finish</h5>
+        </div>
+        <div class="ibox-content">
+          <h1 class="no-margins">{{JobFinish.length}} </h1>
+          <div class="stat-percent font-bold text-info">20% <i class="fa fa-level-up"></i></div>
+          <small>Booked</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-lg-4">
+          <app-hr-jobs-request>
+          </app-hr-jobs-request>
+
+      </div>
+      <div class="col-lg-4">
+        <app-hr-jobs-status>
+        </app-hr-jobs-status>
+      </div>
+      <div class="col-lg-4">
+            <app-hr-jobs></app-hr-jobs>
+      </div>
+
+  </div>
+  <div class="row">
+      <div class="col-lg-12">
+
+          <h4>
+              Serialised Output
+          </h4>
+          <p>
+              Serializes the sortable's item id's into an array of string.
+          </p>
+
+          <div class="output p-m m white-bg"></div>
+
+
+      </div>
+  </div>
+
+
+</div>

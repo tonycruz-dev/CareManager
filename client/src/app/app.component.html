@@ -1,0 +1,33 @@
+<ngx-spinner>
+    <h3>Loading...</h3>
+</ngx-spinner>
+<div id="wrapper">
+  <nav class="navbar-default navbar-static-side" role="navigation">
+      <div class="sidebar-collapse">
+          <app-sade-bar></app-sade-bar>
+      </div>
+  </nav>
+
+  <div id="page-wrapper" class="gray-bg">
+      <div class="row border-bottom">
+          <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+              <div class="navbar-header">
+                  <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+              </div>
+              <app-nav-bar></app-nav-bar>
+          </nav>
+      </div>
+      <router-outlet></router-outlet>
+
+      <div class="footer">
+          <div class="pull-right">
+              10GB of <strong>250GB</strong> Free.
+          </div>
+          <div>
+              <strong>Copyright</strong> Example Company &copy; 2014-2019
+          </div>
+      </div>
+
+  </div>
+</div>
+

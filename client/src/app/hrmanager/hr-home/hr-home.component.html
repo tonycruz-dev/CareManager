@@ -1,0 +1,168 @@
+<div class="wrapper wrapper-content">
+    <div class="row" *ngIf="dashboard$ | async as dashboard"  dashboard>
+        <div class="col-lg-3">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <div class="ibox-tools">
+                        <span class="label label-success float-right">Monthly</span>
+                    </div>
+                    <h5>Job request</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">{{dashboard.totalJobRequest}} </h1>
+                    <div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i></div>
+                    <small>Total Jobs</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <div class="ibox-tools">
+                        <span class="label label-info float-right">Annual</span>
+                    </div>
+                    <h5>Candidates</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">{{dashboard.totalCandidates}}</h1>
+                    <div class="stat-percent font-bold text-info">20% <i class="fa fa-level-up"></i></div>
+                    <small>New Candidates</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <div class="ibox-tools">
+                        <span class="label label-primary float-right">Today</span>
+                    </div>
+                    <h5>Job Confirmed</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">{{dashboard.totalJobConfirmed}}</h1>
+                    <div class="stat-percent font-bold text-navy">44% <i class="fa fa-level-up"></i></div>
+                    <small>New visits</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <div class="ibox-tools">
+                        <span class="label label-info float-right">Low value</span>
+                    </div>
+                    <h5>Invited Candidates</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">{{dashboard.totalInvitesCandidates}}</h1>
+                    <div class="stat-percent font-bold text-danger">38% <i class="fa fa-level-up"></i></div>
+                    <small>In first month</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="dashboard$ | async as dashboard"  dashboard>
+        <div class="col-lg-6">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>List Agency</h5>
+                    <div class="ibox-tools">
+                        <a routerLink="agencies" class="btn btn-primary btn-xs">Agency List</a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="m-b-sm m-t-sm">
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <button tabindex="-1" class="btn btn-white btn-sm" type="button"><i class="fa fa-refresh"></i> Refresh</button>
+                            </div>
+                            <input type="text" class="form-control form-control-sm">
+
+                            <div class="input-group-append">
+                                <button tabindex="-1" class="btn btn-primary btn-sm" type="button">Search</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-list">
+
+                        <table class="table table-hover">
+                            <tbody>
+                                <ng-container *ngFor="let agency of dashboard.agencies">
+                                    <tr>
+                                        <td class="project-title">
+                                            <span>{{agency.contactName}}</span>
+                                        </td>
+                                        <td class="project-title">
+                                            <a href="project_detail.html">{{agency.name}}</a>
+                                            <br>
+                                            <small>Created 14.08.2014</small>
+                                        </td>
+                                        <td class="project-people">
+                                            <a href=""><img alt="image" class="rounded-circle" [src]="agency.logoUrl"></a>
+                                        </td>
+                                        <td class="project-actions">
+                                            <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
+                                        </td>
+                                    </tr>
+                                </ng-container>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>List Candidates</h5>
+                    <div class="ibox-tools">
+                        <a routerLink="/hr-manager/candidates" class="btn btn-primary btn-xs">Candidates List</a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="m-b-sm m-t-sm">
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <button tabindex="-1" class="btn btn-white btn-sm" type="button"><i class="fa fa-refresh"></i> Refresh</button>
+                            </div>
+                            <input type="text" class="form-control form-control-sm">
+
+                            <div class="input-group-append">
+                                <button tabindex="-1" class="btn btn-primary btn-sm" type="button">Search</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-list">
+
+                        <table class="table table-hover">
+                            <tbody>
+                                <ng-container *ngFor="let candidate of dashboard.candidates">
+                                    <tr>
+                                        <td class="project-title">
+                                            <span>{{candidate.firstName}} {{candidate.lastName}}</span>
+                                        </td>
+                                        <td class="project-title">
+                                            <a href="project_detail.html">{{candidate.grade}}</a>
+                                            <br>
+                                            <small>Created 14.08.2014</small>
+                                        </td>
+                                        <td class="project-people">
+                                            <a href=""><img alt="image" class="rounded-circle" [src]="candidate.photoUrl"></a>
+                                        </td>
+                                        <td class="project-actions">
+                                            <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
+                                        </td>
+                                    </tr>
+                                </ng-container>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

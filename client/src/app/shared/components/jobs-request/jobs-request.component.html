@@ -1,0 +1,38 @@
+<div class="ibox">
+  <div class="ibox-content">
+      <h3>Requested Jobs ({{dataSource.length}})</h3>
+
+    <div class="btn-group float-right mb-2">
+      <button  [ngClass]="{disabled: currentPage === 0}" [disabled]="currentPage === 0" (click)="paginate(currentPage - 1)" class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i></button>
+      <button  [ngClass]="{disabled: currentPage +1 === pageCount}" [disabled]="currentPage +1 === pageCount" (click)="paginate(currentPage + 1)" class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i></button>
+    </div>
+    <div class="input-group">
+    </div>
+
+      <ul class="sortable-list connectList agile-list ui-sortable" id="todo">
+        <li *ngFor="let job of displaySource" [ngClass]='isJobRequestRespond(job)'>
+          <div class="row">
+            <div class="col-md-2">
+               <img class="rounded-circle" style="width: 50px; height: 50px;" [src]="job.avatarAgencyUrl" alt="Image Description">
+            </div>
+            <div class="col-md-10">
+              <p class="single-post-content-wrapper">
+                {{job.jobAddress}}
+              </p>
+              <p class="single-post-content-wrapper">
+                <i class="fa fa-calendar"></i> Date: {{job.jobDate | date}}
+              </p>
+            </div>
+          </div>
+           <div class="agile-detail" >
+               <ng-container *ngIf="!JobRequestStates(job)">
+                  <button (click)="onAcceptJob(job)"  class="float-right btn btn-xs btn-primary ml-2">Accept</button>
+                  <button (click)="onRejectJob(job)" class="float-right btn btn-xs btn-danger">Reject</button>
+               </ng-container>
+                <i class="fa fa-clock-o"></i> {{job.startTime}} - {{job.endTime}}
+            </div>
+        </li>
+
+      </ul>
+  </div>
+</div>

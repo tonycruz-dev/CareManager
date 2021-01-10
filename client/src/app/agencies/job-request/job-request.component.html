@@ -1,0 +1,148 @@
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-lg-2">
+            <div class="ibox ">
+                <div class="ibox-content mailbox-content">
+                    <div class="file-manager">
+                        <a class="btn btn-block btn-primary compose-mail" routerLink="/agency/addjob">Add Job Request</a>
+                        <div class="space-25"></div>
+
+                        <h5>Job Status</h5>
+                        <ul class="folder-list" style="padding: 0">
+                            <li><a routerLink="." (click)="selectJobStatus('Booked')"> <i class="fa fa-circle text-navy"></i> Booked <span
+                              class="label label-primary float-right">{{jobRequestPagination.booked}} </span> </a></li>
+                            <li><a routerLink="." (click)="selectJobStatus('Canceled')"> <i class="fa fa-circle text-danger"></i> Canceled <span
+                              class="label label-danger float-right">{{jobRequestPagination.canceled}} </span></a></li>
+                            <li><a routerLink="." (click)="selectJobStatus('Finish')"> <i class="fa fa-circle text-primary"></i> Finish<span
+                              class="label label-plain float-right">{{jobRequestPagination.finish}} </span></a></li>
+                            <li><a routerLink="." (click)="selectJobStatus('In Progress')"> <i class="fa fa-circle text-info"></i> In Progress<span
+                              class="label label-info float-right">{{jobRequestPagination.inProgress}} </span></a></li>
+                            <li><a routerLink="." (click)="selectJobStatus('Pending')"> <i class="fa fa-circle text-warning"></i> Pending<span
+                              class="label label-warning float-right">{{jobRequestPagination.pending}} </span></a></li>
+                        </ul>
+
+                        <h5 class="tag-title">Labels</h5>
+                        <ul class="tag-list" style="padding: 0">
+                            <li><a href=""><i class="fa fa-tag"></i> Family</a></li>
+                            <li><a href=""><i class="fa fa-tag"></i> Work</a></li>
+                            <li><a href=""><i class="fa fa-tag"></i> Home</a></li>
+                            <li><a href=""><i class="fa fa-tag"></i> Children</a></li>
+                            <li><a href=""><i class="fa fa-tag"></i> Holidays</a></li>
+                            <li><a href=""><i class="fa fa-tag"></i> Music</a></li>
+                            <li><a href=""><i class="fa fa-tag"></i> Photography</a></li>
+                            <li><a href=""><i class="fa fa-tag"></i> Film</a></li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-10 animated fadeInRight">
+            <div class="mail-box-header">
+
+
+                <form method="get" action="index.html" class="float-right mail-search">
+                    <div class="input-group">
+                        <input type="text" (keyup.enter)="onSearch()" #search class="form-control form-control-sm" name="search"
+                            placeholder=" search Address">
+                        <div class="input-group-btn">
+                            <button type="submit" class="btn btn-sm btn-primary">
+                                Search
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <h2>
+                    Job Request ({{jobRequestPagination.totalCount}})
+                </h2>
+                <div class="mail-tools tooltip-demo m-t-md">
+                    <div class="btn-group float-right">
+                        <button [disabled]="jobRequestParams.pageNumber === 1" [ngClass]="{disabled: jobRequestParams.pageNumber === 1}" (click)="onPageChanged(jobRequestParams.pageNumber - 1)" class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i></button>
+                        <button [disabled]="jobRequestParams.pageNumber === pageCount" [ngClass]="{disabled: jobRequestParams.pageNumber === pageCount}" (click)="onPageChanged(jobRequestParams.pageNumber + 1)" class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i></button>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-2">
+                          <button class="btn btn-white btn-sm mr-2" data-toggle="tooltip" data-placement="left"
+                               title="Refresh inbox" (click)="onRefresh()" >
+                               <i class="fa fa-refresh"></i> Refresh
+                          </button>
+                      </div>
+                      <div class="input-group col-sm-4">
+                          <input type="text"
+                          autocomplete="off"
+                          bsDaterangepicker
+                          required
+                          [(ngModel)]="searchDateRange"
+                          [bsConfig]="{ rangeInputFormat: 'DD-MM-YYYY', displayOneMonthRange: true}"
+                          class="form-control"
+                          name="dateRange"
+                          [isOpen]="isOpenFrom">
+                        <div class="input-group-append">
+                            <span class="input-group-text" id="basic-addon2"><span class="fa fa-calendar" (click)="isOpenFrom = !isOpenFrom"></span></span>
+                            <span class="input-group-text" id="basic-addon2"><span class="fa fa-search success"  (click)="onSearchByDate()"></span></span>
+                        </div>
+                      </div>
+
+                    </div>
+
+
+                    <!-- <button class="btn btn-white btn-sm mr-2" data-toggle="tooltip" data-placement="top"
+                        title="Mark as read"><i class="fa fa-eye"></i> </button>
+                    <button class="btn btn-white btn-sm mr-2" data-toggle="tooltip" data-placement="top"
+                        title="Mark as important"><i class="fa fa-exclamation"></i> </button>
+                    <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top"
+                        title="Move to trash"><i class="fa fa-trash-o"></i> </button> -->
+
+                </div>
+            </div>
+            <div class="mail-box">
+
+                <table class="table table-hover table-mail">
+                    <tbody>
+                        <ng-container *ngFor="let jobrequest of jobRequestPagination.data">
+                            <tr [ngClass]="{'unread': jobrequest.shiftStateId ==1 ,'read': jobrequest.shiftStateId > 1}">
+                                <td  class="mail-ontact" style="width: 15%;">
+                                        {{jobrequest.jobType}}
+                                </td>
+                                <td style="width: 12%;">
+                                   <span class="label" *ngIf="jobrequest.shiftStateId ==1"> no Response</span>
+                                  <a  [routerLink]="['/agency/responded', jobrequest.id]" *ngIf="jobrequest.shiftStateId ==2">
+                                     <span class="label">Response</span>
+                                  </a>
+                                  <a  [routerLink]="['/agency/responded', jobrequest.id]" *ngIf="jobrequest.shiftStateId ==3">
+                                    <span class="label">Response</span>
+                                  </a>
+                                  <a  [routerLink]="['/agency/responded', jobrequest.id]" *ngIf="jobrequest.shiftStateId ==4">
+                                    <span  class="label">Response</span>
+                                  </a>
+                                </td>
+
+
+                                <td class="mail-ontact" style="width: 12%;">
+                                    <a  [routerLink]="['/agency/invite', jobrequest.id]" *ngIf="jobrequest.shiftStateId ==1">
+                                       <span class="label label-warning">Pending</span>
+                                    </a>
+                                    <a  [routerLink]="['/agency/inprogress', jobrequest.id]" *ngIf="jobrequest.shiftStateId ==2">
+                                        <span class="label label-info">In Progress</span>
+                                    </a>
+                                    <a  [routerLink]="['/agency/booked', jobrequest.id]" *ngIf="jobrequest.shiftStateId ==3">
+                                        <span class="label label-primary">Booked</span>
+                                    </a>
+                                    <a  [routerLink]="['/agency/booked', jobrequest.id]" *ngIf="jobrequest.shiftStateId ==4">
+                                        <span  class="label label-success">Finish</span>
+                                    </a>
+                                </td>
+                                <td class="mail-subject">
+                                   {{jobrequest.clientLocation}}
+                                </td>
+                                <td class="mail-subject">{{jobrequest.grade}}</td>
+                                <td class="text-right mail-date">{{jobrequest.jobDateStart | date: 'dd-MMM-yyyy'}}</td>
+                                <td class="text-right mail-date">{{jobrequest.startTime}} {{jobrequest.endTime}}</td>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

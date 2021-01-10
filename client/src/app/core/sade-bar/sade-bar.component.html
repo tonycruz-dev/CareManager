@@ -1,0 +1,58 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+  <div class="sidebar-collapse">
+    <ul class="nav metismenu" id="side-menu">
+      <li class="nav-header">
+        <div class="dropdown profile-element" *ngIf="currentUser$ | async">
+          <img alt="image" class="rounded-circle" style="width: 80px; height: 80px;"
+            src="{{(currentUser$ | async).avatar}}" />
+          <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+            <span class="block m-t-xs font-bold">{{(currentUser$ | async).displayName}}</span>
+            <span class="text-muted text-xs block">{{(currentUser$ | async).occupation}} <b class="caret"></b></span>
+          </a>
+          <ul class="dropdown-menu animated fadeInRight m-t-xs">
+
+            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+            <li><a class="dropdown-item" href="contacts.html">Contacts</a></li>
+            <li><a class="dropdown-item" href="mailbox.html">Mailbox</a></li>
+            <li class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="login.html">Logout</a></li>
+
+          </ul>
+        </div>
+        <div class="logo-element">
+          IN+
+        </div>
+      </li>
+
+      <li>
+        <a href="#">
+          <i class="fa fa-th-large" *ngIf="userDetails?.occupation ==='Candidate'"></i>
+          <span class="nav-label" *ngIf="userDetails?.occupation ==='Candidate'">Candidate</span>
+          <span class="fa arrow" *ngIf="userDetails?.occupation ==='Candidate'"></span>
+        </a>
+        <ul class="nav nav-second-level collapse">
+          <li><a routerLink="/candidate" *ngIf="userDetails?.occupation ==='Candidate'">Job Request</a></li>
+          <li> <a routerLink="/candidate/photo" *ngIf="userDetails?.occupation ==='Candidate'">Profiles</a></li>
+          <li><a routerLink="/candidate/document" *ngIf="userDetails?.occupation ==='Candidate'">Upload document</a>
+          </li>
+        </ul>
+      </li>
+
+
+      <li>
+        <a href="/#">
+          <i class="fa fa-th-large" *ngIf="userDetails?.occupation ==='Client'"></i>
+          <span class="nav-label" *ngIf="userDetails?.occupation ==='Client'">Client</span>
+          <span class="fa arrow" *ngIf="userDetails?.occupation ==='Client'"></span>
+        </a>
+        <ul class="nav nav-second-level collapse">
+          <li><a routerLink="/agency/jobs" *ngIf="userDetails?.occupation ==='Client'">Job Schedule</a></li>
+          <li> <a routerLink="/agency/profile-photo" *ngIf="userDetails?.occupation ==='Client'">Profiles</a></li>
+          <li> <a routerLink="/agency/location-list" *ngIf="userDetails?.occupation ==='Client'">Manage Locations</a>
+          </li>
+          <li><a routerLink="/agency/jobs" *ngIf="userDetails?.occupation ==='Client'">Upload document</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>

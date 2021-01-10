@@ -1,0 +1,29 @@
+export interface IJobrequest {
+    id: number;
+    numberCandidate: number;
+    jobDateStart: string;
+    jobDateEnd: string;
+    startTime: string;
+    endTime: string;
+    numberApplied: number;
+    timeDetail: string;
+    timeDetailId: number;
+    jobType: string;
+    jobTypeId: number;
+    paymentType: string;
+    paymentTypeId: number;
+    agency: string;
+    agencyId: number;
+    gradeId: number;
+    grade: string;
+    clientLocation: string;
+    clientLocationId: number;
+    attributeDetail: string;
+    attributeDetailId: number;
+    appUser: string;
+    appUserId: string;
+    shiftState: string;
+    shiftStateId: number;
+    ariaId: number;
+    aria: string;
+}

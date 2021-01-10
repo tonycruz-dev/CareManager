@@ -1,0 +1,43 @@
+
+<div class="ibox">
+    <div class="ibox-title">
+      <h5>Prifile Photos</h5>
+    </div>
+    <div class="ibox-content">
+      <div ngx-dropzone [accept]="'image/*'" (change)="onSelect($event)">
+        <ngx-dropzone-label>
+          <div>
+            <h2>My custom dropzone</h2>
+          </div>
+        </ngx-dropzone-label>
+        <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"
+          [removable]="true" (removed)="onRemove(f)">
+          <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+        </ngx-dropzone-image-preview>
+      </div>
+    </div>
+    <div class="ibox" *ngIf="candidatePhotos$ | async as candidatePhotos"  candidatePhotos>
+      <div class="ibox-title">
+        <h5>Prifile Photos</h5>
+      </div>
+      <div class="row">
+        <div class="col-lg-2" *ngFor="let item of candidatePhotos">
+        <div class="contact-box center-version">
+            <a href="#" class="{{item.isMain ? 'selected-item' : 'selected-item-white'}}">
+                <img alt="image" class="rounded-circle" src="{{item.url}}">
+                <h3 class="m-b-xs"><strong>{{item.description}} </strong></h3>
+            </a>
+            <div class="contact-box-footer m-l-0 m-r-0">
+                <div class="m-t-xs btn-group">
+                    <button class="btn btn-xs btn-white" (click)="setToMainPicture(item)"><i class="fa fa-check"></i> set Main </button>
+                    <!-- <button class="btn btn-xs btn-danger" (click)="openModal(templatedDelete, item)" ><i class="fa fa-trash "></i> delete </button> -->
+                    <button class="btn btn-xs btn-danger" (click)="showModateswal(item)">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+</div>
+
+

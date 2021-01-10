@@ -1,0 +1,252 @@
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="ibox ">
+                <div class="ibox-content mailbox-content">
+                    <div class="file-manager">
+                        <a class="btn btn-block btn-primary compose-mail" href="mail_compose.html">Add Job Schedule</a>
+                        <div class="space-25"></div>
+                        <h5>Job Status</h5>
+                        <ul class="folder-list" style="padding: 0">
+                            <li><a href="#"> <i class="fa fa-circle text-navy"></i> Booked <span
+                              class="label label-primary float-right">16</span> </a></li>
+                            <li><a href="#"> <i class="fa fa-circle text-danger"></i> Canceled <span
+                              class="label label-danger float-right">5</span></a></li>
+                            <li><a href="#"> <i class="fa fa-circle text-primary"></i> Finish<span
+                              class="label label-plain float-right">100</span></a></li>
+                            <li><a href="#"> <i class="fa fa-circle text-info"></i> In Progress<span
+                              class="label label-info float-right">5</span></a></li>
+                            <li><a href="#"> <i class="fa fa-circle text-warning"></i> Pending<span
+                              class="label label-warning float-right">6</span></a></li>
+                        </ul>
+
+                        <h5 class="tag-title">Labels</h5>
+                        <ul class="tag-list" style="padding: 0">
+                            <li><a href=""><i class="fa fa-tag"></i> Family</a></li>
+                            <li><a href=""><i class="fa fa-tag"></i> Work</a></li>
+                            <li><a href=""><i class="fa fa-tag"></i> Home</a></li>
+                            <li><a href=""><i class="fa fa-tag"></i> Children</a></li>
+                            <li><a href=""><i class="fa fa-tag"></i> Holidays</a></li>
+                            <li><a href=""><i class="fa fa-tag"></i> Music</a></li>
+                            <li><a href=""><i class="fa fa-tag"></i> Photography</a></li>
+                            <li><a href=""><i class="fa fa-tag"></i> Film</a></li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-9 animated fadeInRight">
+            <div class="mail-box-header">
+                <div class="float-right tooltip-demo">
+                    <!-- <a href="mailbox.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top"
+                        title="Move to draft folder"><i class="fa fa-pencil"></i> Draft</a> -->
+                    <a [routerLink]="['/agency/jobs']" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top"
+                        title="Discard email"><i class="fa fa-arrow-circle-left"></i> Back</a>
+                </div>
+                <h2>
+                    Add Job Schedule
+                </h2>
+            </div>
+            <div class="mail-box">
+
+
+                <div class="mail-body">
+
+                    <form novalidate (ngSubmit)="save(jobRequest)" #jobRequest="ngForm">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Payment Type:</label>
+                                    <div class="input-group col-sm-9">
+                                        <select
+                                        id="paymentTypeId"
+                                        required
+                                        [(ngModel)]="jobToRequest.paymentTypeId"
+                                        #paymentTypeIdVar="ngModel"
+                                        name="paymentTypeId"
+                                       [ngClass]="{'is-invalid': (paymentTypeIdVar.touched || paymentTypeIdVar.dirty) && !paymentTypeIdVar.valid }"
+                                            class="form-control">
+                                            <option *ngFor="let payment of AgencyLoops?.paymentTypes" [value]="payment.id">{{payment.name}}
+                                            </option>
+                                        </select>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" id="basic-addon2"><span class="fa fa-calendar"></span></span>
+                                        </div>
+                                    </div>
+                                    <span asp-validation-for="House.LandlordId" class="text-danger"></span>
+
+                                </div>
+                                <div class="form-group row"><label class="col-sm-3 col-form-label">Aria:</label>
+
+                                    <div class="input-group col-sm-9">
+                                        <select id="ariaId" [(ngModel)]="jobToRequest.ariaId" name="ariaId" class="form-control">
+                                            <option *ngFor="let aria of AgencyLoops?.arias" [value]="aria.id">{{aria.borough}} </option>
+                                        </select>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" id="basic-addon2"><span class="fa fa-road"></span></span>
+                                        </div>
+                                    </div>
+                                    <span asp-validation-for="House.LandlordId" class="text-danger"></span>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Job Details:</label>
+                                    <div class="input-group col-sm-9">
+                                        <select id="jobTypeId" [(ngModel)]="jobToRequest.jobTypeId" name="jobTypeId" class="form-control">
+                                            <option *ngFor="let jobtype of AgencyLoops?.jobTypes" [value]="jobtype.id">{{jobtype.jobName}} </option>
+                                        </select>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" id="basic-addon2"><span class="fa fa-user-md"></span></span>
+                                        </div>
+                                    </div>
+                                    <span asp-validation-for="House.LandlordId" class="text-danger"></span>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Grade:</label>
+                                    <div class="input-group col-sm-9">
+                                        <select id="gradeId" [(ngModel)]="jobToRequest.gradeId" name="gradeId" class="form-control">
+                                            <option *ngFor="let grade of AgencyLoops?.grades" [value]="grade.id">{{grade.gradeName}} </option>
+                                        </select>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" id="basic-addon2"><span class="fa fa-sort-amount-asc"></span></span>
+                                        </div>
+                                    </div>
+                                    <span asp-validation-for="House.LandlordId" class="text-danger"></span>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Attribute:</label>
+                                    <div class="input-group col-sm-9">
+                                        <select id="attributeDetailId" [(ngModel)]="jobToRequest.attributeDetailId" name="attributeDetailId"
+                                            class="form-control">
+                                            <option *ngFor="let attr of AgencyLoops?.attributeDetails" [value]="attr.id">{{attr.attributeName}}
+                                            </option>
+                                        </select>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" id="basic-addon2"><span class="fa fa-user-circle"></span></span>
+                                        </div>
+                                    </div>
+                                    <span asp-validation-for="House.LandlordId" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Job Location:</label>
+                                    <div class="input-group col-sm-9">
+                                        <select id="clientLocationId" [(ngModel)]="jobToRequest.clientLocationId" name="clientLocationId"
+                                            class="form-control">
+                                            <option *ngFor="let cl of AgencyLoops?.clientLocations" [value]="cl.id">{{cl.address1}}
+                                            </option>
+                                        </select>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" id="basic-addon2"><span class="fa fa-map-marker"></span></span>
+                                        </div>
+                                    </div>
+                                    <span asp-validation-for="House.LandlordId" class="text-danger"></span>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Candidates:</label>
+                                    <div class="input-group col-sm-9">
+                                        <input placeholder="number of candidate (required)" required [(ngModel)]=jobToRequest.numberCandidate
+                                                        name="numberCandidate"
+                                                        #numberCandidateVar="ngModel"
+                                                        [ngClass]="{'is-invalid': (numberCandidateVar.touched || numberCandidateVar.dirty) && !numberCandidateVar.valid }"
+                                                        type="number"
+                                                        class="form-control" />
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" id="basic-addon2"><span class="fa fa-users"></span></span>
+                                        </div>
+                                    </div>
+                                    <span asp-validation-for="House.LandlordId" class="text-danger"></span>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Start @:</label>
+                                    <div class="input-group col-sm-9">
+                                        <select id="timeDetailId" [(ngModel)]="jobToRequest.timeDetailId" name="timeDetailId"
+                                            class="form-control">
+                                            <option *ngFor="let timd of AgencyLoops?.timeDetails" [value]="timd.id">{{timd.hour}}
+                                            </option>
+                                        </select>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" id="basic-addon2"><span class="fa fa-calendar-plus-o"></span></span>
+                                        </div>
+                                    </div>
+                                    <span asp-validation-for="House.LandlordId" class="text-danger"></span>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Finish @:</label>
+                                    <div class="input-group col-sm-9">
+                                        <select id="endTimeDetailId" [(ngModel)]="jobToRequest.endTimeDetailId" name="endTimeDetailId"
+                                            class="form-control">
+                                            <option *ngFor="let timd of AgencyLoops?.timeDetails" [value]="timd.id">{{timd.hour}}
+                                            </option>
+                                        </select>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" id="basic-addon2"><span class="fa fa-calendar-check-o"></span></span>
+                                        </div>
+                                    </div>
+                                    <span asp-validation-for="House.LandlordId" class="text-danger"></span>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Candidates:</label>
+                                    <div class="input-group col-sm-9">
+                                        <input type="text"
+                                           autocomplete="off"
+                                           bsDaterangepicker
+                                           required
+                                           [(ngModel)]="jobToRequest.dateRange"
+                                           [bsConfig]="{ rangeInputFormat: 'DD-MM-YYYY', displayOneMonthRange: true}"
+                                           class="form-control"
+                                           name="dateRange"
+                                           [isOpen]="isOpenFrom">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" id="basic-addon2"><span class="fa fa-calendar" (click)="isOpenFrom = !isOpenFrom"></span></span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+                <div class="mail-body text-right tooltip-demo">
+                    <button [disabled]="!jobRequest.valid" (click)="save(jobRequest)" class="btn btn-md btn-primary" data-toggle="tooltip" data-placement="top"
+                        title="Send"> Send <i class="fa fa-paper-plane"> </i></button>
+                    <!-- <a href="mailbox.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top"
+                        title="Discard email"><i class="fa fa-times"></i> Discard</a>
+                    <a href="mailbox.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top"
+                        title="Move to draft folder"><i class="fa fa-pencil"></i> Draft</a> -->
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="mail-box">
+              <div class="mail-body">
+                <table class="table table-hover table-mail">
+                    <tbody>
+                        <ng-container *ngFor="let jobrequest of InsertedjobsRequests">
+                            <tr [ngClass]="{'unread': jobrequest.shiftStateId ==1 ,'read': jobrequest.shiftStateId > 1}">
+                                <td  class="mail-ontact">
+                                        {{jobrequest.jobType}}
+                                </td>
+                                <td class="mail-ontact">
+                                    <span *ngIf="jobrequest.shiftStateId ==1" class="label label-warning">Pending</span>
+                                    <span *ngIf="jobrequest.shiftStateId ==2" class="label label-info">In Progress</span>
+                                    <span *ngIf="jobrequest.shiftStateId ==3" class="label label-primary">Booked</span>
+                                    <span *ngIf="jobrequest.shiftStateId ==4" class="label label-success">Finish</span>
+                                </td>
+                                <td class="mail-subject">{{jobrequest.clientLocation}}</td>
+                                <td class="mail-subject">Num Candidate ({{jobrequest.numberCandidate}})</td>
+                                <td class="text-right mail-date">{{jobrequest.jobDateStart | date: 'dd-MMM-yyyy'}}</td>
+                                <td class="text-right mail-date">{{jobrequest.startTime}} {{jobrequest.endTime}}</td>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+              </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

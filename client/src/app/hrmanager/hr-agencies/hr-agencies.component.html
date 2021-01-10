@@ -1,0 +1,79 @@
+<div class="wrapper wrapper-content">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox">
+        <div class="ibox-title">
+            <h5>List Agency</h5>
+            <div class="ibox-tools">
+                <a routerLink="/hr-manager" class="btn btn-primary btn-xs">Dashboard</a>
+            </div>
+        </div>
+        <div class="ibox-content">
+            <div class="m-b-sm m-t-sm">
+
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <button tabindex="-1" class="btn btn-white btn-sm" type="button"><i class="fa fa-refresh"></i> Refresh</button>
+                    </div>
+                    <input type="text" class="form-control form-control-sm">
+
+                    <div class="input-group-append">
+                        <button tabindex="-1" class="btn btn-primary btn-sm" type="button">Search</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="project-list">
+
+                <table class="table table-hover">
+                    <tbody>
+                        <ng-container *ngFor="let agency of agencies">
+                            <tr>
+                                <td class="project-title">
+                                    <span>{{agency.contactName}}</span>
+                                </td>
+                                <td class="project-title">
+                                    <a href="project_detail.html">{{agency.name}}</a>
+                                    <br>
+                                    <small>Created 14.08.2014</small>
+                                </td>
+                                <td class="project-people">
+                                    <a href=""><img alt="image" class="rounded-circle" [src]="agency.logoUrl"></a>
+                                </td>
+                                <td class="project-actions">
+                                    <a [routerLink]="['/hr-manager/hr-job-request', agency.id]" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
+                                </td>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+            </div> -->
+            <div class="project-list">
+                <div class="row">
+                    <div class="col-lg-2" *ngFor="let agency of agencies">
+                        <div class="contact-box center-version">
+                            <a [routerLink]="['/hr-manager/hr-job-request', agency.id]" class="selected-item-white">
+                                <img alt="image" class="rounded-circle" src="{{agency.logoUrl}}">
+                                <h3 class="m-b-xs"><strong>{{agency.contactName}} {{agency.name}}</strong></h3>
+                                <div class="font-bold">{{agency.email}}</div>
+                                <address class="m-t-md">
+                                    <strong>{{agency?.address1}}</strong><br>
+                                    {{agency?.address2}}<br>
+                                    <abbr title="Phone">P:</abbr> {{agency?.contactNumber}}
+                                </address>
+                            </a>
+                            <div class="contact-box-footer">
+                                <div class="m-t-xs btn-group">
+                                    <a [routerLink]="['/hr-manager/hr-photo', agency.id]" class="btn btn-white btn-sm"><i class="fa fa-photo"></i> View </a>
+                                    <a [routerLink]="['/hr-manager/hr-document', agency.id]" class="btn btn-white btn-sm"><i class="fa fa-file-pdf-o"></i> Doc </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    </div>
+  </div>
+</div>

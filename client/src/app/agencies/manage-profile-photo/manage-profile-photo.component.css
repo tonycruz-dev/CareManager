@@ -1,0 +1,23 @@
+ngx-dropzone,
+.custom-dropzone {
+  margin: 20px;
+}
+
+.custom-dropzone {
+	height: 250px;
+	background: rgb(124, 119, 119);
+	color: #fff;
+	border: 5px dashed rgb(235, 79, 79);
+	border-radius: 5px;
+	font-size: 20px;
+}
+
+.custom-dropzone.ngx-dz-hovered {
+  border: 5px solid rgb(235, 79, 79);
+}
+.selected-item {
+    background-color:antiquewhite !important;
+}
+.selected-item-white {
+    background-color: white;
+}

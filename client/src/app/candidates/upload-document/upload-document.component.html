@@ -1,0 +1,41 @@
+<div class="ibox">
+    <div class="ibox-title">
+        <h5>Prifile Photos</h5>
+    </div>
+    <div class="ibox-content">
+
+
+        <div ngx-dropzone [accept]="'*'" (change)="onSelect($event)">
+            <ngx-dropzone-label>
+                <div>
+                    <h2>My custom dropzone</h2>
+                </div>
+            </ngx-dropzone-label>
+            <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"
+                [removable]="true" (removed)="onRemove(f)">
+                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+            </ngx-dropzone-image-preview>
+        </div>
+    </div>
+    <div class="ibox" *ngIf="candidateDocuments$ | async as candidateDocuments" candidateDocuments>
+        <div class="ibox-title">
+            <h5>Prifile Photos</h5>
+        </div>
+        <div class="row">
+            <div class="col-lg-2" *ngFor="let item of candidateDocuments">
+                <div class="contact-box center-version">
+                    <a [routerLink]="['/candidate/document-view', item.id]">
+                        <i class="fa fa-file-pdf-o fa-5x"></i>
+                    </a>
+                    <div class="contact-box-footer m-l-0 m-r-0">
+                        <h3 class="m-b-xs"><strong>{{item.description}} </strong></h3>
+                        <div class="m-t-xs btn-group">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

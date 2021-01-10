@@ -1,0 +1,57 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+      <div class="col-lg-12">
+          <div class="ibox">
+              <div class="ibox-title">
+                      <h5>Job finish</h5>
+              </div>
+              <div class="ibox-content">
+                  <div class="row">
+                      <div class="col-sm-6 b-r">
+                         <h3 class="m-t-none m-b">update job Status</h3>
+                         <form role="form"  #jobFinal="ngForm">
+
+                          <div class="form-group">
+                              <label>Rate</label> <br/>
+                               <rating [(ngModel)]="frmCandidate.rate" #rateVal="ngModel" [ngModelOptions]="{standalone: true}" [max]="frmCandidate.max" (keyup)="confirmSelection($event)"></rating>
+
+                          </div>
+                          <div class="form-group">
+                              <label>Description</label>
+                              <textarea #finalNote="ngModel" [(ngModel)]="frmCandidate.finalNote" [ngModelOptions]="{standalone: true}" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                          </div>
+                          <div>
+                              <button (click)="onUpdateFinalJobRequest()" class="btn btn-sm btn-primary float-right m-t-n-xs" type="button" ><strong>Job Done</strong></button>
+
+                          </div>
+                         </form>
+                      </div>
+                      <div class="col-sm-6 b-r">
+                          <div class="contact-box center-version">
+
+
+                              <a href="#" class="{{candidateBooked.finishShift ? 'selected-item' : 'selected-item-white'}}">
+                                  <img alt="image" class="rounded-circle" src="{{candidateBooked.photoUrl}}">
+                                  <h3 class="m-b-xs"><strong>{{candidateBooked.firstName}} {{candidateBooked.lastName}}</strong></h3>
+                                  <address class="m-t-md">
+                                      <strong>{{candidateBooked?.address1}}</strong><br>
+                                      {{candidateBooked?.address2}}<br>
+                                      <abbr title="Phone">P:</abbr> {{candidateBooked?.contactNumber}}
+                                  </address>
+
+                              </a>
+                              <div class="contact-box-footer">
+                                  <div class="m-t-xs btn-group">
+                                  </div>
+                              </div>
+
+                          </div>
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+

@@ -1,0 +1,187 @@
+<div class="wrapper wrapper-content">
+  <div class="row">
+    <div class="col-lg-12 animated fadeInRight">
+      <div class="mail-box-header">
+        <div class="float-right tooltip-demo">
+          <a href="mailbox.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top"
+            title="Move to draft folder"><i class="fa fa-pencil"></i> Draft</a>
+          <a [routerLink]="['/agency/jobs']" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top"
+            title="Discard email"><i class="fa fa-arrow-circle-left"></i> Back</a>
+        </div>
+        <h2>
+          Add Locations
+        </h2>
+      </div>
+      <div class="mail-box">
+        <div class="mail-body">
+          <form novalidate #formLocation="ngForm">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label">Company Name:</label>
+                  <div class="input-group col-sm-9">
+                    <input placeholder="Company (required)" required
+                         [(ngModel)]="clientLocation.companyName"
+                         #companyNameVar="ngModel"
+                                    name="companyName"
+                                    [ngClass]="{'is-invalid': (companyNameVar.touched || companyNameVar.dirty) && !companyNameVar.valid }"
+                                    class="form-control" />
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2">
+                          <span class="fa fa-hospital-o"></span>
+                        </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label">Manager:</label>
+                  <div class="input-group col-sm-9">
+                    <input placeholder="Manager (required)" required
+                    [(ngModel)]="clientLocation.managerName"
+                    #managerNameVar="ngModel"
+                               name="managerName"
+                               [ngClass]="{'is-invalid': (managerNameVar.touched || managerNameVar.dirty) && !managerNameVar.valid }"
+                                class="form-control" />
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2"><span class="fa fa-address-card-o"></span></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label">Contact Name:</label>
+                  <div class="input-group col-sm-9">
+                    <input placeholder="Contact (required)" required
+                    [(ngModel)]="clientLocation.contactName"
+                           #contactNameVar="ngModel"
+                               name="contactName"
+                               [ngClass]="{'is-invalid': (contactNameVar.touched || contactNameVar.dirty) && !contactNameVar.valid }"
+                               class="form-control" />
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2"><span class="fa fa-address-book-o"></span></span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label">Contact number</label>
+                  <div class="input-group col-sm-9">
+                    <input placeholder="Contact Number (required)" required
+                    [(ngModel)]="clientLocation.contactNumber"
+                           #contactNumberVar="ngModel"
+                               name="contactNumber"
+                               [ngClass]="{'is-invalid': (contactNumberVar.touched || contactNumberVar.dirty) && !contactNumberVar.valid }"
+                                   class="form-control" />
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2"><span class="fa fa-volume-control-phone"></span></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label">Address :</label>
+                  <div class="input-group col-sm-9">
+                    <input placeholder="address (required)" required
+                        [(ngModel)]="clientLocation.address1"
+                               #address1Var="ngModel"
+                               name="address1"
+                               [ngClass]="{'is-invalid': (address1Var.touched || address1Var.dirty) && !address1Var.valid }"
+
+                                    class="form-control" />
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2"><span class="fa fa-map-marker"></span></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label"></label>
+                  <div class="input-group col-sm-9">
+                    <input placeholder="(required) Docklands" required
+                              [(ngModel)]="clientLocation.address2"
+                               #address2Var="ngModel"
+                               name="address2"
+                               [ngClass]="{'is-invalid': (address2Var.touched || address2Var.dirty) && !address2Var.valid }"
+                               class="form-control" />
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2"><span class="fa fa-map-marker"></span></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label"></label>
+                  <div class="input-group col-sm-9">
+                    <input placeholder="(required) London" required
+                          [(ngModel)]="clientLocation.address3"
+                          #address3Var="ngModel"
+                          name="address3"
+                          [ngClass]="{'is-invalid': (address3Var.touched || address3Var.dirty) && !address3Var.valid }"
+                          class="form-control" />
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2"><span class="fa fa-map-marker"></span></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label"></label>
+                  <div class="input-group col-sm-9">
+                    <input placeholder="(required) E16 1AA" required
+                            [(ngModel)]="clientLocation.address4"
+                            #address4Var="ngModel"
+                            name="address4"
+                            [ngClass]="{'is-invalid': (address4Var.touched || address4Var.dirty) && !address4Var.valid }"
+                            class="form-control" />
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2"><span class="fa fa-map-marker"></span></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label"></label>
+                  <div class="input-group col-sm-9">
+                    <input placeholder="England or Scotland"
+                        [(ngModel)]="clientLocation.address5"
+                        #address5Var="ngModel"
+                        name="address5"
+                        class="form-control" />
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2"><span class="fa fa-map-marker"></span></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="mail-body text-right tooltip-demo">
+                   <button [disabled]="!formLocation.valid" (click)="saveServices()"   class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top"
+                        title="Save"><i class="fa fa-floppy-o"></i> Save location</button>
+                </div>
+              </div>
+
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-12">
+      <table class="table table-hover table-mail">
+          <tbody>
+              <ng-container *ngFor="let cl of clientLcations">
+                  <tr>
+                      <td  class="mail-ontact">
+                              {{cl.companyName}}
+                      </td>
+                      <td class="mail-ontact">
+                          <span class="label label-success">{{cl.contactName}}</span>
+                      </td>
+                      <td class="mail-subject">{{cl.contactNumber}}</td>
+                      <td class="mail-subject">{{cl.address1}}</td>
+                      <td class="mail-subject">{{cl.address2}}</td>
+                  </tr>
+              </ng-container>
+          </tbody>
+      </table>
+  </div>
+  </div>
+</div>
